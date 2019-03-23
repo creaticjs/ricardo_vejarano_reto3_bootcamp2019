@@ -56,17 +56,23 @@
                     <form class="col s12">
                         <div class="row">
                             <h5 class="center-align">
-                                Please insert the number in words and end with the character "."
-                            </h5>
+                                Calculate the value of e^x</h5>
                             <div class="input-field col s4 offset-s4">
-                                <input id="number-entry" oninput="inputEvent()" type="text" class="validate">
-                                <label for="number-entry">Number</label>
+                                <input id="x-entry" type="number" class="validate">
+                                <label for="x-entry">Value of x </label>
                             </div>
                         </div>
                         <div class="center-align">
+                            <button onclick="calculate()"
+                                class="btn waves-effect waves-light blue-grey lighten-5 blue-text" type="button"
+                                name="action">Calculate
+                            </button>
                         </div>
-                        <div id="number-div" class="center-align">
-                            <h5 id="number"></h5>
+                        <div id="e-div" class="center-align">
+                            <h5 id="euler"></h5>
+                        </div>
+                        <div id="table-div" class="center-align">
+                            <h5 id="totalSum"></h5>
                         </div>
                     </form>
                 </div>
