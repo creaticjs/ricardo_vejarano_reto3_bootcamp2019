@@ -1,12 +1,17 @@
 function calculate() {
-    var s1 = document.getElementById('side1').value;
-    var s2 = document.getElementById('side2').value;
-    var s3 = document.getElementById('side3').value;
-    if (s1 && s2 && s3) {
-        var p = (parseFloat(s1)+parseFloat(s2)+parseFloat(s3))/2
-        var a = Math.sqrt(p*(p - s1)*(p - s2)*(p - s2));
-        document.getElementById('area').innerHTML = '<p>Area: ' + a + '</p>';
+    var year = document.getElementById('year-entry').value;
+    year = Number(year);
+    if (year % 4 === 0) {
+        if (year % 100 === 0) {
+            if (year % 400 === 0) {
+                document.getElementById('year').innerHTML = '<p> YES </p>';
+            } else {
+                document.getElementById('year').innerHTML = '<p> NO </p>';
+            }
+        } else {
+            document.getElementById('year').innerHTML = '<p> YES </p>';
+        }
     } else {
-        Materialize.toast('All fields are required', 4000);
+        document.getElementById('year').innerHTML = '<p> NO </p>';
     }
 }
