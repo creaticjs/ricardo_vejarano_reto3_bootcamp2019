@@ -1,47 +1,57 @@
 function calculate() {
-    var date_complete = document.getElementById('date-entry').value;
-    var day = date_complete.split(',')[0];
-    var month_year = date_complete.split(',')[1];
-    var month = month_year.split(' ')[1];
-    var year = month_year.split(' ')[2];
-    var monthNumber = numberMonth(month);
-    if(monthNumber !== 0) {
-        document.getElementById('date').innerHTML = '<p>Date: ' + day + ' ' + monthNumber + ' ' + year +' </p>';    
+    // 
+    // document.getElementById('date').innerHTML = '<p>Date: ' + day + ' ' + monthNumber + ' ' + year +' </p>';    
+    var n = document.getElementById('number').value;
+    n = Number(n);
+    var intentNumber = 0;
+    var iW = 1;
+    var arrayPerfects = new Array();
+    var finalMessage = '';
+
+    if (n > 0 && n <= 3) {
+        while (intentNumber < n) {
+            if (onlyCalc(iW)) {
+                intentNumber++;
+                arrayPerfects.push(iW);
+            }
+            iW++;
+        }
+        console.log(arrayPerfects);
+        for (var t = 0; t < arrayPerfects.length; t++) {
+            if (t !== arrayPerfects.length - 1) {
+                finalMessage += arrayPerfects[t] + ' - ';
+            } else {
+                finalMessage += arrayPerfects[t]
+            }
+        }
+
+        document.getElementById('result').innerHTML = '<p>Result: ' + finalMessage + ' </p>';
+
     } else {
-        Materialize.toast('Invalid data', 4000);
+        Materialize.toast('Invalid number', 4000);
     }
+
 }
 
-function numberMonth(nameMonth) {
-    var number = 0;
-    var name = nameMonth.toLowerCase() 
-    switch(name) {
-        case 'enero': number = 1;
-        break;
-        case 'febrero': number = 2;
-        break;
-        case 'marzo': number = 3;
-        break;
-        case 'abril': number = 4;
-        break;
-        case 'mayo': number = 5;
-        break;
-        case 'junio': number = 6;
-        break;
-        case 'julio': number = 7;
-        break;
-        case 'agosto': number = 8;
-        break;
-        case 'septiembre': number = 9;
-        break;
-        case 'octubre': number = 10;
-        break;
-        case 'noviembre': number = 11;
-        break;
-        case 'diciembre': number = 12;
-        break;
-        default: number = 0;
-        break;
+function onlyCalc(number) {
+    var array = new Array();
+    for (var x = 1; x < number; x++) {
+        if (Number.isInteger(number / x)) {
+            array.push(x);
+        }
     }
-    return number;
+    if (array.length > 1) {
+        var sum = 0;
+        for (var j = 0; j < array.length; j++) {
+            sum = sum + array[j];
+        }
+
+        if (sum === number) {
+            return true
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
 }
