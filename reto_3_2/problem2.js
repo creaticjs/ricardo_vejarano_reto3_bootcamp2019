@@ -1,17 +1,29 @@
 function calculate() {
-    var g = 6.673e-8;
-    var m1 = document.getElementById('masse1').value;
-    var m2 = document.getElementById('masse2').value;
-    var dis = document.getElementById('distance').value;
-    if (m1 && m2 && dis) {
-        dis2 = Math.pow(dis, 2);
-        var f = (g * m1 * m2) / dis2;
-        document.getElementById('force-show').innerHTML = '<p>Force: ' +f + '  g × cm/seg² </p>';
+    var terms = document.getElementById('terms-entry').value;
+    var pi = 0;
+    var num = 2;
+    var den = 1;
 
-        var fString = f.toString().replace('e', 'x10')
 
-        document.getElementById('force-show2').innerHTML ='<p>Force in dynas: ' + fString + '  dyn </p>';
+    if (terms > 0) {
+        for (var x = 0; x < terms; x++) {
+            if (x === 0) {
+                pi = num / den;
+            } else {
+                if (x % 2 === 0) {
+                    num = num + 2;
+                } else {
+                    den = den + 2;
+                }
+                // console.log(`factor ${x} => `, `${num}/${den}`);
+                pi = pi * (num / den);
+            }
+        }
+        // console.log(pi);
+        pi = pi * 2;
     } else {
-        Materialize.toast('All fields are required', 4000);
+        Materialize.toast('Invalid data', 4000);
     }
+
+    document.getElementById('pi').innerHTML = '<p>Value of pi with ' + terms + ' terms: ' + pi + '</p>';
 }

@@ -11,6 +11,8 @@ function calculate() {
         salary = salary + salary * 0.05;
     } else if (salary > 20000) {
         salary = salary;
+    } else {
+        Materialize.toast('Invalid Value', 4000);
     }
 
     document.getElementById('salary').innerHTML = '<p>New Salary: ' + salary + ' </p>';;
