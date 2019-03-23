@@ -49,26 +49,37 @@
     <!-- END NAV BAR SECTION -->
 
 
-    <div class="container" style="margin-top:5%;">
+    <div id="container" class="container" style="margin-top:5%;">
         <div class="row">
             <div class="col s12 offset-s3">
                 <div class="row">
                     <form class="col s12">
                         <div class="row">
-                            <h5 class="center-align">Amount of energy produced when the mass is converted into energy</h5>
+                            <h5 class="center-align">
+                                Calculate the highest, lowest and mean of N numbers entered
+                            </h5>
                             <div class="input-field col s4 offset-s4">
-                                <input id="masse" type="number" class="validate">
-                                <label for="masse">Masse [g]</label>
+                                <input id="nNumbers" type="number" class="validate">
+                                <label for="nNumbers">N numbers</label>
                             </div>
                         </div>
                         <div class="center-align">
+                            <button onclick="generateInputs()"
+                                class="btn waves-effect waves-light blue-grey lighten-5 blue-text" type="button"
+                                name="action">Generate Inputs
+                            </button>
+                        </div>
+                        <div id="inputsContainer" class="row" style="margin-top: 20px;">
+
+                        </div>
+                        <div class="center-align" style="margin-top: 40px;">
                             <button onclick="calculate()"
                                 class="btn waves-effect waves-light blue-grey lighten-5 blue-text" type="button"
                                 name="action">Calculate
                             </button>
                         </div>
-                        <div id="energy-div" class="center-align">
-                            <h5 id="energy"></h5>
+                        <div id="calculate-div" class="center-align">
+                            <h5 id="calculate"></h5>
                         </div>
                     </form>
                 </div>
