@@ -56,26 +56,21 @@
                     <form class="col s12">
                         <div class="row">
                             <h5 class="center-align">
-                                Please attach a text file with the format of start date and end date: DD-MM-YYYY
-                                DD-MM-YYYY
-                                Please make sure there are no spaces at the end.
-                                And example of the file is located in the folder of this problem.
+                                Calculate the sum of 1 / N
                             </h5>
-                            <div class="file-field input-field col s12 offset-s4">
-                                <div class="btn">
-                                    <span>File</span>
-                                    <input accept='text/plain' onchange='openFile(event)' type="file">
-                                </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text">
-                                </div>
+                            <div class="input-field col s4 offset-s4">
+                                <input id="numberTyped" type="number" class="validate">
+                                <label for="numberTyped">N</label>
+                            </div>
+                            <div class="center-align col s12">
+                                <button onclick="calculate()"
+                                    class="btn waves-effect waves-light blue-grey lighten-5 blue-text" type="button"
+                                    name="action">Calculate
+                                </button>
                             </div>
                         </div>
-                        <div id="dateRef-div" class="center-align">
-                            <h5 id="dateRef"></h5>
-                        </div>
-                        <div id="date-div" class="center-align">
-                            <h5 id="date"></h5>
+                        <div id="result-div" class="center-align">
+                            <h5 id="result"></h5>
                         </div>
                     </form>
                 </div>
