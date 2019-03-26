@@ -41,7 +41,7 @@
                     <li class="tab"><a onclick="navegate(15);" href="#test4">15</a></li>
                     <li class="tab"><a onclick="navegate(16);" href="#test2">16</a></li>
                     <li class="tab"><a onclick="navegate(17);" href="#test4" class="active">17</a></li>
-                    <li class="tab"><a onclick="navegate(18);" href="#test4">18</a></li>
+                    
                 </ul>
             </div>
         </nav>
@@ -49,29 +49,37 @@
     <!-- END NAV BAR SECTION -->
 
 
-    <div class="container" style="margin-top:5%;">
+    <div id="container" class="container" style="margin-top:5%;">
         <div class="row">
             <div class="col s12 offset-s3">
                 <div class="row">
                     <form class="col s12">
                         <div class="row">
-                            <h5 class="center-align">Less number of coins and bills to represent a quantity of COP</h5>
+                            <h5 class="center-align">
+                                Calculate the highest, lowest and mean of N numbers entered
+                            </h5>
                             <div class="input-field col s4 offset-s4">
-                                <input id="amount-entry" type="number" class="validate">
-                                <label for="amount">Amount</label>
+                                <input id="nNumbers" type="number" class="validate">
+                                <label for="nNumbers">N numbers</label>
                             </div>
                         </div>
                         <div class="center-align">
+                            <button onclick="generateInputs()"
+                                class="btn waves-effect waves-light blue-grey lighten-5 blue-text" type="button"
+                                name="action">Generate Inputs
+                            </button>
+                        </div>
+                        <div id="inputsContainer" class="row" style="margin-top: 20px;">
+
+                        </div>
+                        <div class="center-align" style="margin-top: 40px;">
                             <button onclick="calculate()"
                                 class="btn waves-effect waves-light blue-grey lighten-5 blue-text" type="button"
                                 name="action">Calculate
                             </button>
                         </div>
-                        <div id="bill-div" class="center-align">
-                            <h5 id="bills"></h5>
-                        </div>
-                        <div id="coins-div" class="center-align">
-                            <h5 id="coins"></h5>
+                        <div id="calculate-div" class="center-align">
+                            <h5 id="calculate"></h5>
                         </div>
                     </form>
                 </div>

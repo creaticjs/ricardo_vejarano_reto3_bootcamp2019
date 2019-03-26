@@ -1,42 +1,50 @@
-var billsCop = [100000, 50000, 20000, 10000, 5000, 2000, 1000];
-var coinsCop = [500, 200, 100, 50];
+var arrayNumbers = [];
+var totalInputs = 0;
+var nNumbers = 0;
+var highest = 0;
+var lowest = 0;
+var average = 0;
+
+function generateInputs() {
+    nNumbers = document.getElementById('nNumbers').value;
+    totalInputs = nNumbers;
+    for (var x = 0; x < nNumbers; x++) {
+        num = x + 1;
+        var input = document.createElement("input");
+        input.type = "number";
+        input.placeholder = "number" + num;
+        input.name = "number" + x;
+        input.id = "number" + num;
+        input.className = "input-field col s4 offset-s4"
+        inputsContainer.appendChild(input);
+        inputsContainer.appendChild(document.createElement("br"));
+    }
+
+}
 
 function calculate() {
-    var amount = document.getElementById('amount-entry').value;
-    // console.log(amount);
-    var totalBills = '';
-    var totalCoins = '';
-    amount = Number(amount);
-    if (Number(amount) >= 1000) {
-        for (var x = 0; x < billsCop.length; x++) {
-            var temp = amount % billsCop[x];
-            if (temp > 0 || billsCop[x] === Number(amount)) {
-                var quantity = amount / billsCop[x];
-                quantity = parseInt(quantity);
-                if (quantity > 0) {
-                    amount = amount - quantity * billsCop[x];
-                    totalBills += quantity + ' of ' + billsCop[x] + ' | ';
-                }
-            }
-        }
+    arrayNumbers = [];
+    for (var x = 0; x < totalInputs; x++) {
+        num = x + 1;
+        const tempNumber = document.getElementById("number" + num).value;
+        arrayNumbers.push(Number(tempNumber));
     }
-    if (amount < 1000) {
-        for (var x = 0; x < coinsCop.length; x++) {
-            var temp = amount % coinsCop[x];
-            if (temp > 0 || coinsCop[x] === Number(amount)) {
-                var quantity = amount / coinsCop[x];
-                quantity = parseInt(quantity);
-                if (quantity > 0) {
-                    amount = amount - quantity * coinsCop[x];
-                    totalCoins += quantity + ' of ' + coinsCop[x] + ' | ';
-                }
-            }
-        }
-    }
+    arrayNumbers.sort();
+    // console.log(arrayNumbers);
+    highest = arrayNumbers[arrayNumbers.length - 1];
+    lowest = arrayNumbers[0];
+    average = calculateAverage(arrayNumbers);
+    // console.log(highest, lowest);
+    document.getElementById('calculate').innerHTML = '<p>Highest:  ' + highest + ' | Lowest: ' + lowest + ' | Average: ' + average + '</p>';
 
-    document.getElementById('bills').innerHTML = '<p>Bills: ' + totalBills + ' </p>';
-    if (totalCoins !== '') {
-        document.getElementById('coins').innerHTML = '<p>Coins: ' + totalCoins + ' </p>';
-    }
+}
 
+function calculateAverage(array) {
+    var sum = 0;
+    var averageNumber = 0;
+    for (var x = 0; x < array.length; x++) {
+        sum = sum + array[x];
+    }
+    averageNumber = sum / (array.length);
+    return averageNumber
 }
