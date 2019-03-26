@@ -1,17 +1,20 @@
 function calculate() {
-    var year = document.getElementById('year-entry').value;
-    year = Number(year);
-    if (year % 4 === 0) {
-        if (year % 100 === 0) {
-            if (year % 400 === 0) {
-                document.getElementById('year').innerHTML = '<p> YES </p>';
-            } else {
-                document.getElementById('year').innerHTML = '<p> NO </p>';
+    var number = document.getElementById('number-entry').value;
+    number = Number(number);
+    var result = '';
+    var space = '<br>'
+
+    if (number > 0) {
+        for (var x = 1; x <= number; x++) {
+            var point = '*'
+            var linePoint = ''
+            for (var j = 1; j <= x; j++) {
+                linePoint += point
             }
-        } else {
-            document.getElementById('year').innerHTML = '<p> YES </p>';
+            result += linePoint + space;
         }
+        document.getElementById('result').innerHTML = '<h5>' + result + ' </h5>';
     } else {
-        document.getElementById('year').innerHTML = '<p> NO </p>';
+        Materialize.toast('Invalid number', 4000);
     }
 }
