@@ -1,11 +1,32 @@
+var totalRabbits = 0;
+
 function calculate() {
-    var radious = document.getElementById('radious-entry').value;
-    var diameter = 2*radious;
-    var pi = 3.1416;
-    var circ = pi*diameter;
-    var diameter2 = Math.pow(radious, 2)
-    var area = pi*diameter2;
+    // 
+    var numberRabiitsPairs = document.getElementById('numberRabiits').value;
+    numberRabiitsPairs = Number(numberRabiitsPairs);
+    var months = 0;
+    months = rabbits(numberRabiitsPairs) -2;
+    document.getElementById('months').innerHTML = '<p>Number of months: ' +  months + ' </p>';
+    document.getElementById('rabbitsPair').innerHTML = '<p>Pair of rabbits: ' +  totalRabbits + ' </p>';
+    // console.log(`Meses necesarios ${months}`);
 
-    document.getElementById('radious').innerHTML = '<p>Circumference: ' + circ + ' | Area: ' + area + ' | Diameter: ' + diameter + ' </p>';
+}
 
+function rabbits(pairOfRabbits) {
+    var a = 1;
+    var b = 0;
+    var temp;
+    var counter = 0;
+
+    while (b <= pairOfRabbits) {
+        // console.log('b =>', b, ' Pair =>', pairOfRabbits);
+        counter ++;
+        temp = a;
+        a = a + b;
+        b = temp;
+        totalRabbits = b;
+        // console.log('b', b);
+    }
+
+    return counter;
 }
