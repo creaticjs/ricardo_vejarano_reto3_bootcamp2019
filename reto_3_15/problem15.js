@@ -1,36 +1,45 @@
+var arrayDivisors = new Array();
+
 function calculate() {
-    var month = document.getElementById('month').value;
-    var year = document.getElementById('year').value;
-    var arrayDays = [];
+    var number = document.getElementById('number').value;
+    number = Number(number);
+    var isPerfect = false;
 
-    if (Number(month) > 0 && Number(month) <= 12) {
+    isPerfect = isPerfectNumber(number);
 
-        if (Number(month) === 12) {
-            var secondMonth = 1;
-            var secondYear = Number(year) + 1;
-            var secondDate = secondYear + '-' + secondMonth + '-01';
-        } else {
-            var secondMonth = Number(month) + 1;
-            var secondDate = year + '-' + secondMonth + '-01';
-        }
-
-
-        var dateRef = year + '-' + month + '-01';
-
-
-        var dateMil = new Date(dateRef).getTime();
-        var dateTwoMil = new Date(secondDate).getTime();
-        var one_day = 1000 * 60 * 60 * 24;
-
-        for (var i = dateMil; i <= dateTwoMil; i = i + one_day) {
-            var date123 = new Date(parseInt(i.toString())).toISOString();
-            var allDate = date123.split('T');
-            arrayDays.push(allDate[0]);
-        }
-        var total = arrayDays.length - 1;
-        document.getElementById('days').innerHTML = '<p>Total: ' + total + ' days </p>';
+    if (isPerfect) {
+        document.getElementById('result').innerHTML = '<p>Is Perfect </p>';
     } else {
-        Materialize.toast('Invalid data', 4000);
+        document.getElementById('result').innerHTML = '<p>Is not Perfect </p>';
+    }
+
+
+
+
+}
+
+function isPerfectNumber(number) {
+
+    for (var x = 1; x < number; x++) {
+        if (number % x === 0) {
+            arrayDivisors.push(x);
+        }
+    }
+
+    var sum = 0;
+    for (var y = 0; y < arrayDivisors.length; y++) {
+        sum = sum + arrayDivisors[y];
+    }
+    console.log(number, sum);
+
+    if (sum === number) {
+        arrayDivisors = new Array();
+        return true;
+
+    } else {
+        arrayDivisors = new Array();
+        sum = 0;
+        return false;
     }
 }
 
